@@ -3,17 +3,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ConversorTest {
 
-    Conversor conversor = new Conversor();
-
     @Test
-    public void testFahrenheitParaCelsius() {
-        // CORRIGIDO PARA O CENÁRIO 3: 32°F deve ser 0°C
-        assertEquals(0.0, conversor.fahrenheitParaCelsius(32.0), 0.001);
+    public void testCelsiusParaFahrenheit() {
+        Conversor conversor = new Conversor();
+        assertEquals(32.0, conversor.celsiusParaFahrenheit(0.0));
     }
 
     @Test
-    public void testCelsiusParaFahrenheit() {
-        // 100°C deve ser 212°F
-        assertEquals(212.0, conversor.celsiusParaFahrenheit(100.0), 0.001);
+    public void testFahrenheitParaCelsius() {
+        Conversor conversor = new Conversor();
+        
+        // FALTANDO O PONTO E VÍRGULA ABAIXO DE PROPÓSITO PARA O CENÁRIO 4.2
+        assertEquals(0.0, conversor.fahrenheitParaCelsius(32.0))
     }
 }
