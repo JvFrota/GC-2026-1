@@ -13,7 +13,7 @@ public class ConversorTest {
     public void testFahrenheitParaCelsius() {
         Conversor conversor = new Conversor();
         
-        // FALTANDO O PONTO E VÍRGULA ABAIXO DE PROPÓSITO PARA O CENÁRIO 4.2
-        assertEquals(0.0, conversor.fahrenheitParaCelsius(32.0))
+        // PONTO E VÍRGULA CORRIGIDO PARA O BUILD VOLTAR A FICAR VERDE
+        assertEquals(0.0, conversor.fahrenheitParaCelsius(32.0));
     }
 }
