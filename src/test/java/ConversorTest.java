@@ -7,9 +7,8 @@ public class ConversorTest {
 
     @Test
     public void testFahrenheitParaCelsius() {
-        // FORÇANDO ERRO PARA O CENÁRIO 2: 
-        // 32°F deveria ser 0.0, mas vamos esperar 999.0 para falhar o build de propósito.
-        assertEquals(999.0, conversor.fahrenheitParaCelsius(32.0), 0.001);
+        // CORRIGIDO PARA O CENÁRIO 3: 32°F deve ser 0°C
+        assertEquals(0.0, conversor.fahrenheitParaCelsius(32.0), 0.001);
     }
 
     @Test
