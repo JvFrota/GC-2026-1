@@ -5,13 +5,13 @@ public class ConversorTest {
 
     @Test
     public void testeFahrenheitParaCelsius() {
-        // 32F deve ser igual a 0C (Este vai passar)
+        // 32F deve ser igual a 0C
         assertEquals(0.0, Conversor.fahrenheitParaCelsius(32.0), 0.001);
     }
 
     @Test
     public void testeCelsiusParaFahrenheit() {
-        // Modificado de 32.0 para 999.0 para forçar a falha no teste (Cenário 3)
-        assertEquals(999.0, Conversor.celsiusParaFahrenheit(0.0), 0.001);
+        // Corrigido de volta para 32.0 para o teste passar com sucesso
+        assertEquals(32.0, Conversor.celsiusParaFahrenheit(0.0), 0.001);
     }
 }
