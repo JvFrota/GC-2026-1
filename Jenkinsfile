@@ -1,21 +1,17 @@
 pipeline {
     agent none 
 
-    // Ajustado para o termo exato que o Jenkins exige
-    tools {
-        dockerTool 'default'
-    }
-
     stages {
         stage('Build em Container') {
             agent {
                 docker {
                     image 'maven:3.9-eclipse-temurin-17-alpine'
-                    reuseNode true 
+                    // Remove o isolamento para herdar o socket do host perfeitamente
+                    args '-v /var/run/docker.sock:/var/run/docker.sock'
                 }
             }
             steps {
-                echo 'Iniciando o Build em um container Docker...'
+                echo 'Iniciando o Build em um container Maven...'
                 sh 'mvn clean compile'
             }
         }
@@ -24,12 +20,11 @@ pipeline {
             agent {
                 docker {
                     image 'maven:3.9-eclipse-temurin-17-alpine'
-                    reuseNode true
+                    args '-v /var/run/docker.sock:/var/run/docker.sock'
                 }
             }
             steps {
-                echo 'Iniciando os Testes em outro container Docker...'
-                // Ignora falha de teste para que a pipeline continue e marque como instável (Cenário 3)
+                echo 'Iniciando os Testes em outro container Maven...'
                 sh 'mvn test -Dmaven.test.failure.ignore=true'
             }
             post {
