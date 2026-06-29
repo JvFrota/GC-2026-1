@@ -1,8 +1,9 @@
 pipeline {
     agent none 
 
-        tools {
-        docker 'default'
+    // Ajustado para o termo exato que o Jenkins exige
+    tools {
+        dockerTool 'default'
     }
 
     stages {
@@ -28,7 +29,8 @@ pipeline {
             }
             steps {
                 echo 'Iniciando os Testes em outro container Docker...'
-                                sh 'mvn test -Dmaven.test.failure.ignore=true'
+                // Ignora falha de teste para que a pipeline continue e marque como instável (Cenário 3)
+                sh 'mvn test -Dmaven.test.failure.ignore=true'
             }
             post {
                 always {
